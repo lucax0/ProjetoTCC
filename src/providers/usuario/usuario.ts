@@ -65,11 +65,12 @@ export class UsuarioProvider {
             }*/
     })
   }
-  updateSenha(senha : String,email : any){
+  updateSenha(senha : String,id : any){
     return new Promise((resolve, reject) => {
       //    if (usuarios.key) {
-      this.db.list("/usuarios/" + email)
-        .update(email, {
+        
+      this.db.list(this.PATH)
+        .update(id, {
           senha: senha,
         })
         .then(() => resolve())

@@ -35,6 +35,7 @@
         "@ionic/storage": "2.2.0",
         "angularfire2": "^5.1.2",
         "com-badrit-base64": "^0.2.0",
+        "cordova": "^9.0.0",
         "cordova-android": "^7.1.4",
         "cordova-plugin-add-swift-support": "^1.7.2",
         "cordova-plugin-aes256-encryption": "^1.1.0",

@@ -10,7 +10,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { AngularFirestore } from 'angularfire2/firestore';
-import { EmailComposer } from '@ionic-native/email-composer';
+import { EmailComposer } from '@ionic-native/email-composer/ngx';
 
 import { AdicaoAulaPage } from '../pages/adicao-aula/adicao-aula';
 import { AulasPage } from '../pages/aulas/aulas';
@@ -82,6 +82,7 @@ import { BuscaProvider } from '../providers/busca/busca';
     StatusBar,
     SplashScreen,
     ConfigProvider,
+    EmailComposer,
     Camera,
     UsuarioProvider,
     LoadingController,
