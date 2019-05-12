@@ -12,27 +12,34 @@
     </ion-segment>
   </ion-toolbar>
 
-  <ion-toolbar [hidden]="barra == true">
+  <ion-toolbar>
     <ion-segment color="primary">
-      <ion-segment-button value="Pendentes">Pendentes</ion-segment-button>
-      <ion-segment-button value="Confirmadas">Pendentes</ion-segment-button>
-      <ion-segment-button value="Recusadas">Recusadas</ion-segment-button>
-    </ion-segment>
-  </ion-toolbar>
-
-  <ion-toolbar [hidden]="barra == false">
-    <ion-segment color="primary">
-      <ion-segment-button value="NaoRealizadas">Não Realizadas</ion-segment-button>
-      <ion-segment-button value="Concluidas">Concluidas</ion-segment-button>
+      <ion-segment-button value="Confirmadas" (click)="getSolicitacoes('Confirmada')">Confirmadas
+      </ion-segment-button>
+      <ion-segment-button value="Pendentes" (click)="getSolicitacoes('Pendente')">Pendentes</ion-segment-button>
+      <ion-segment-button value="Recusadas/Canceladas" (click)="getSolicitacoes( 'Recusada')">Recusadas
+      </ion-segment-button>
     </ion-segment>
   </ion-toolbar>
 </ion-header>
 
 
 <ion-content padding>
- <!-- <ion-refresher slot="fixed"> 
+  <!-- <ion-refresher slot="fixed"> 
     <ion-searchbar></ion-searchbar>
   </ion-refresher>-->
+  <ion-card *ngFor="let solic of aulasFiltradas" [hidden]="aulas=='' || myClasses == undefined"
+    (click)="setAnswer(solic)">
+    <ion-card-header>
+      {{solic.solicitante}}
+    </ion-card-header>
+    <ion-card-content>
+      Data: {{solic.dataA}}<br>
+      Hora: {{solic.hora}}<br><br>
 
-
+      Matéria: {{solic.materia}}<br>
+      Descrição:<br>
+      {{solic.desc}}
+    </ion-card-content>
+  </ion-card>
 </ion-content>

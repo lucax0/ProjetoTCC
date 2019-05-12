@@ -50,7 +50,7 @@ export class BuscaProvider {
 
   private aplicarFiltros() {
     this.tutoresFiltradas = _.filter(this.tutores, _.conforms(this.filtros));
-    console.log(this.tutoresFiltradas);
+    //console.log(this.tutoresFiltradas);
   }
 
   private aplicarFiltrosCheckbox(filtro: any[], propriedade: any) {
@@ -58,7 +58,7 @@ export class BuscaProvider {
     var i: number = 0;
 
     filtro.forEach(element => {
-      console.log(element);
+      //console.log(element);
 
       if (element != "") {
         this.filtros[propriedade] = val => val.indexOf(element) > -1;

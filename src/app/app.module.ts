@@ -10,6 +10,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { LocalNotifications } from '@ionic-native/local-notifications';
+import { Calendar } from '@ionic-native/calendar';
 
 import { AdicaoAulaPage } from '../pages/adicao-aula/adicao-aula';
 import { AulasPage } from '../pages/aulas/aulas';
@@ -88,6 +89,7 @@ import { AulaProvider } from '../providers/aula/aula';
     UsuarioProvider,
     LoadingController,
     LocalNotifications,
+    Calendar,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     AulaProvider,  
   ]

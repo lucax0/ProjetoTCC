@@ -25,7 +25,6 @@ export class SolicitacaoAulaPage {
   private date: Date;
   private minD: any;
   private maxD: any;
-  private minT: any;
   private tutor: string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private toast: ToastController,
@@ -37,8 +36,6 @@ export class SolicitacaoAulaPage {
 
     this.minD = this.date.getUTCFullYear();
     this.maxD = this.date.getUTCFullYear();
-    this.minT = (this.date.getUTCHours() + 2) + ':' + this.date.getUTCMinutes();
-    console.log(this.minT);
 
     if (this.date.getUTCMonth() < 10) { this.minD = this.minD + "-0" + (this.date.getUTCMonth() + 1); }
     else { this.minD = this.minD + "-" + (this.date.getUTCMonth() + 1); }
@@ -86,10 +83,10 @@ export class SolicitacaoAulaPage {
 
     var promise = this.aulaProvider.alterarTolken(this.currentUser.tolkens, this.currentUser.id, false).then(() => {
 
-      
-      var obsv = this.aulaProvider.get('solicitado/' + this.tutor + key).subscribe((data) => {
+
+      var obsv = this.aulaProvider.get('solicitado/' + this.tutor + '/' + this.currentUser.id + key).subscribe((data) => {
         if (data.key != null) {
-          this.toast.create({ message: 'Aula já solicitada!\nVerifique as informações dela em aula.', duration: 3500 }).present();
+          this.toast.create({ message: 'Aula já solicitada!\nVerifique as informações dela em agenda.', duration: 3500 }).present();
           loading.dismiss();
           return;
         }
@@ -119,26 +116,6 @@ export class SolicitacaoAulaPage {
       return;
     });
   }
-
-
-  /*public teste() {
-     this.localNotifications.schedule({
-       id: 1,
-       text: 'Solicitação de aula',
-       //sound: isAndroid? 'file://sound.mp3': 'file://beep.caf',
-       data: { secret: "TESTE" }
-     });
-  
-  
-     this.localNotifications.isPresent(1).then(res => {
-       if (res == false) {
-         this.toast.create({ message: 'Visto', duration: 3000 }).present();
-       }
-     });
-   }*/
-
-
-
 }
 
 

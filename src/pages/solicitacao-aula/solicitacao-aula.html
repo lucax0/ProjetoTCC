@@ -41,7 +41,7 @@
 
       <ion-item>
         <ion-label>Hora</ion-label>
-        <ion-datetime displayFormat="HH:mm" formControlName="hora" pickerFormat="HH mm" min="{{this.minT}}">
+        <ion-datetime displayFormat="HH:mm" formControlName="hora" pickerFormat="HH mm">
         </ion-datetime>
       </ion-item>
       <ion-item *ngIf="form.controls.hora.value == undefined && form.controls.hora.touched" color="danger">
