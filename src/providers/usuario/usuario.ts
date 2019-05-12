@@ -14,7 +14,6 @@ export class UsuarioProvider {
   public secureIV: string = 'sdoeu1n9d8g4aArC';
 
   constructor(private db: AngularFireDatabase) { }
-  debugger;
   getAll() {
     return this.db.list(this.PATH, ref => ref.orderByChild('id'))
       .snapshotChanges()

@@ -1,13 +1,10 @@
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { IonicPage, NavController, NavParams } from "ionic-angular";
-import { AngularFirestore } from "angularfire2/firestore";
 import { Chat } from "../../models/Chat";
 import { ChatService } from "../../app/app.service";
-import { Storage } from "@ionic/storage";
 import { AngularFireDatabase } from 'angularfire2/database';
 import * as _ from "lodash";
-import { pairs } from 'rxjs/observable/pairs';
 
 
 /**
