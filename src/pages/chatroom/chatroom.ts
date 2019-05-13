@@ -1,4 +1,3 @@
-import { SplashScreen } from '@ionic-native/splash-screen';
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { IonicPage, NavController, NavParams } from "ionic-angular";
 import { Chat } from "../../models/Chat";
@@ -52,17 +51,16 @@ export class ChatroomPage implements OnInit {
 
   ngOnInit() {
     var chats: any[] = [];
-    // console.log(this.chatService.currentChatPairId);
     return this.db.object('/chats').snapshotChanges().map(c => {
       return { key: c.key, ...c.payload.val() };
+
     }).subscribe(res => {
+
       Object.keys(res).forEach(key => {
         var msg = new Object({ key, ...res[key] });
-
         if (!this.veficaSeAMensagemJaExiste(msg, chats)) {
           chats.push(msg);
-        };
-        
+        };        
         this.chats = this.filtrachat(chats);
       });
     });

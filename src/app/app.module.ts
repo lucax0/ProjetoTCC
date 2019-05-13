@@ -15,6 +15,7 @@ import { AngularFirestore, AngularFirestoreModule } from 'angularfire2/firestore
 import { AdicaoAulaPage } from '../pages/adicao-aula/adicao-aula';
 import { ChatroomPage } from './../pages/chatroom/chatroom';
 import { AulasPage } from '../pages/aulas/aulas';
+import { ChatsPage } from '../pages/listachat/chats';
 import { AgendaPage } from '../pages/agenda/agenda';
 import { LoginPage } from '../pages/login/login';
 import { HomePage } from '../pages/home/home';
@@ -46,6 +47,7 @@ import { IonicStorageModule } from '@ionic/storage';
     BuscaPage,
     PerfilPage,
     AgendaPage,
+    ChatsPage,
     AdicaoAulaPage,
     CadastroUsuarioPage,
   ],
@@ -79,6 +81,7 @@ import { IonicStorageModule } from '@ionic/storage';
     IntroPage,
     LoginPage,
     BuscaPage,
+    ChatsPage,
     PerfilPage,    
     AgendaPage,
     AdicaoAulaPage,
