@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>{{chatuser?.name}}</ion-title>
+    <ion-title>Suas conversas</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -17,15 +17,15 @@
 
   <ion-list>
     <ion-list-header>
-      Suas conversas:
+      Usuarios:
     </ion-list-header>
-    <ion-item *ngFor="let user of availableusers" (click)="goToChat(usuario)">
+    <ion-item *ngFor="let user of availableusers" (click)="goToChat(user.id)">
       <ion-avatar item-start>
         <img src="http://via.placeholder.com/16x16">
       </ion-avatar>
-      <h2>{{usuario.name || "Anonymous"}}</h2>
+      <h2>{{user.id || "Anonymous"}}</h2>
 
-      <p>{{usuario.email}}</p>
+      <p>{{user.nome}}</p>
     </ion-item>
 
 

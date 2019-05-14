@@ -26,10 +26,9 @@ import { ChatroomPage } from "../chatroom/chatroom";
 export class ChatsPage implements OnInit {
 
   chats: any[] = [];
-  allusers: any = [];
   filtros = {};
   pair = this.chatService.currentChatPairId;
-  availableusers: any = [];
+  availableusers: any[] = [];
   usuario;
   constructor(
     public navCtrl: NavController,
@@ -45,11 +44,8 @@ export class ChatsPage implements OnInit {
   }
 
   ngOnInit() {
-    var busca: any;
     var chats: any[] = [];
-
-    this.allusers = this.provider.getAll();
-    debugger;
+    
     return this.db.object('/chats').snapshotChanges().map(c => {
       return { key: c.key, ...c.payload.val() };
 
@@ -66,29 +62,36 @@ export class ChatsPage implements OnInit {
 
   }
 
-  pegarUsuariosConectados(list) {
-    
-    console.log(list);
-    var nomedouser = this.currrentUser.id;
-
+  pegarUsuariosConectados(list) { 
     for (let obj of list) {
-      debugger;
-      console.log(obj);
       var users = obj.pair.split("|", 2);
-      console.log(users);
       var user1 = users[0];
       var user2 = users[1];
-      if (user1 == this.currrentUser.id || user2 == this.currrentUser.id) {
-        console.log("achou aqui meu!");
+      if (user1 == this.currrentUser.id) {
+        this.addUsuarioLista(user2);
+      } else if(user2 == this.currrentUser.id){        
+        this.addUsuarioLista(user1);     
       }
     }
   }
-  // filtrachat(chatsToFilter) {
-  //   this.filtros["pair"] = val => val == this.pair;
-  //   chatsToFilter = _.filter(chatsToFilter, _.conforms(this.filtros));
-  //   // console.log(chatsToFilter);
-  //   return chatsToFilter;
-  // }
+
+    addUsuarioLista(id){
+      var allusers: any[] = [];
+      allusers = this.provider.getAll();
+      console.log(this.provider.get(id));
+      debugger;
+      if(!this.availableusers.some(x => x === id)){
+        this.availableusers.push(this.filtrausers(allusers,id));  
+      }          
+    }      
+      
+    filtrausers(chatsToFilter , id) {
+      var usuario;
+      this.filtros["id"] = val => val == id;
+      debugger;
+      usuario = _.filter(chatsToFilter, _.conforms(this.filtros));
+      return usuario.id;
+    }
 
   goToChat(chatpartner) {
     chatpartner.id = chatpartner.key;
