@@ -5,6 +5,7 @@ import { Usuarios } from '../../models/Usuarios';
 import { FormBuilder, FormGroup, Validators, EmailValidator,  } from '@angular/forms';
 import { LoginPage } from '../login/login';
 import { EmailComposer } from '@ionic-native/email-composer/ngx';
+import { database } from 'firebase';
 
 /**
  * Generated class for the RecuperarSenhaPage page.
@@ -32,6 +33,7 @@ export class RecuperarSenhaPage {
     this.form = this.formBuilder.group({
       key: [this.usuario.id],
       id: [this.usuario.id, Validators.required],
+      cpf: [this.usuario.cpf, Validators.required],
     });
   }
   ionViewDidLoad() {
@@ -51,6 +53,12 @@ export class RecuperarSenhaPage {
       
       return;
     }
+    if (this.form.controls.cpf.value == null) {
+      loading.dismiss();
+      this.toast.create({ message: 'O campo de cpf deve ser preenchido!', duration: 3000 }).present();
+      
+      return;
+    }
     /*
     var user: any;
     user = this.provider.get(this.form.controls.id.value);
@@ -58,6 +66,7 @@ export class RecuperarSenhaPage {
       this.toast.create({ message: 'id inexistente!', duration: 30000 }).present();
     }
     */
+
       let outString: string = '';
       let inOptions: string = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
   
@@ -66,24 +75,41 @@ export class RecuperarSenhaPage {
         outString += inOptions.charAt(Math.floor(Math.random() * inOptions.length));
         
       }
+      
+     this.provider.get(this.form.controls.id.value).subscribe(async (data) => {
+      loading.present();
+      this.usuario = data;
+      this.usuario.id = data.key;
+     
+     console.log(this.usuario)
+
+     if(this.usuario.cpf != this.form.controls.cpf.value){
+      this.toast.create({ message: 'Um ou mais campos errados!', duration: 4000 }).present();
+      loading.dismiss();
+      this.navCtrl.push(LoginPage)
+     }else{
+      this.provider.updateSenha(outString,this.form.controls.id.value);
+      /*
       this.emailComposer.isAvailable().then((available: boolean) =>{
         if(available) {
           //Now we know we can send
           
         }
        });
+       
        let email = {
-        to: 'victor.augusto800@gmail.com',
+        to: this.usuario.email,
         subject: 'Recuperação de senha - EqualClass',
-        body: 'Olá, uma recuperação de senha foi solicitada para a sua conta, aqui está uma nova senha que poderá ser ultilizada:',
+        body: 'Olá, uma recuperação de senha foi solicitada para a sua conta, aqui está uma nova senha que poderá ser ultilizada:' + outString,
         isHtml: true
       }
       this.emailComposer.open(email);
-
-      this.provider.updateSenha(outString,this.form.controls.id.value);
-      this.toast.create({ message: 'Senha nova enviada com sucesso!', duration: 3000 }).present();
+      */
+      this.toast.create({ message: 'Senha nova enviada com sucesso!', duration: 4000 }).present();
       loading.dismiss();
       this.navCtrl.push(LoginPage)
+     }
+    });
     }
   /*
   enviaEmail(email,senha){
