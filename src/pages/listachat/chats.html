@@ -19,17 +19,15 @@
     <ion-list-header>
       Usuarios:
     </ion-list-header>
-    <ion-item *ngFor="let user of availableusers" (click)="goToChat(user.id)">
-      <ion-avatar item-start>
-        <img src="http://via.placeholder.com/16x16">
-      </ion-avatar>
-      <h2>{{user.id || "Anonymous"}}</h2>
+    <ion-item *ngFor="let user of availableusers" (click)="goToChat(user)">
+
+      <h2>{{user.key || "Anonymous"}}</h2>
 
       <p>{{user.nome}}</p>
     </ion-item>
 
 
 
-  </ion-list> 
+  </ion-list>
 
 </ion-content>
