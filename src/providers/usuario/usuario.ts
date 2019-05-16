@@ -64,7 +64,19 @@ export class UsuarioProvider {
             }*/
     })
   }
+  updateSenha(senha : String,id : any){
+    return new Promise((resolve, reject) => {
+      //    if (usuarios.key) {
+        
+      this.db.list(this.PATH)
+        .update(id, {
+          senha: senha,
+        })
+        .then(() => resolve())
+        .catch((e) => reject(e));
 
+    })
+  }
   remove(key: string) {
     return this.db.list(this.PATH).remove(key);
   }

@@ -26,6 +26,7 @@ import { IntroPage } from '../pages/intro/intro';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { CadastroUsuarioPage } from '../pages/cadastro-usuario/cadastro-usuario';
+import { RecuperarSenhaPage } from '../pages/recuperar-senha/recuperar-senha';
 
 import { AES256 } from '@ionic-native/aes-256';
 import { ConfigProvider } from '../providers/config/config';
@@ -49,6 +50,7 @@ import { IonicStorageModule } from '@ionic/storage';
     AgendaPage,
     ChatsPage,
     AdicaoAulaPage,
+    RecuperarSenhaPage,
     CadastroUsuarioPage,
   ],
   imports: [
@@ -85,6 +87,7 @@ import { IonicStorageModule } from '@ionic/storage';
     PerfilPage,    
     AgendaPage,
     AdicaoAulaPage,
+    RecuperarSenhaPage,
     CadastroUsuarioPage,
   ],
   providers: [

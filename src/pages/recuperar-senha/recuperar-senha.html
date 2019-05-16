@@ -1,0 +1,29 @@
+<!--
+  Generated template for the RecuperarSenhaPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>recuperar-senha</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <form [formGroup]="form">
+    <ion-label stacked>Digite o seu id de usuário:</ion-label>
+    <ion-input type="text" autofocus formControlName="id"></ion-input>
+    <br>
+    <ion-label stacked>Digite o seu cpf:</ion-label>
+    <ion-input type="text" formControlName="cpf"></ion-input>
+    <br>
+    <br>
+    <div style="text-align: center;">
+        <button class="btn" (click) ="RecuperarSenhaRandom()">Recuperar senha</button>
+    </div>
+  </form>  
+</ion-content>
