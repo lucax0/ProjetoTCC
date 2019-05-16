@@ -79,15 +79,12 @@ export class ChatroomPage implements OnInit {
   filtrachat(chatsToFilter) {
     this.filtros["pair"] = val => val == this.pair;
     chatsToFilter = _.filter(chatsToFilter, _.conforms(this.filtros));
-    // console.log(chatsToFilter);
     return chatsToFilter;
   }
 
   addChat() {
     
     if (this.message && this.message !== "") {
-      debugger;
-      console.log(this.chats);
       var chatPayload = {
         message: this.message,
         sender: this.chatuser.id,

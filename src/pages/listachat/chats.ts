@@ -42,6 +42,7 @@ export class ChatsPage implements OnInit {
 
   ngOnInit() {
     var chats: any[] = [];
+    var time = 1;
 
     return this.db.object('/chats').snapshotChanges().map(c => {
       return { key: c.key, ...c.payload.val() };
@@ -53,10 +54,14 @@ export class ChatsPage implements OnInit {
         chats.push(msg);
       });
       chats = chats.slice(1);
-      this.pegarUsuariosConectados(chats);
+      if(time == 1){
+        this.pegarUsuariosConectados(chats);
+        time++; 
+      }
+      
     });
 
-  }
+  }//ngoinit 
 
   pegarUsuariosConectados(list) {
     const loading = this.loadingCtrl.create({
