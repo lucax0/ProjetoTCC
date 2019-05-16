@@ -4,7 +4,7 @@ import { UsuarioProvider } from '../../providers/usuario/usuario';
 import { Usuarios } from '../../models/Usuarios';
 import { FormBuilder, FormGroup, Validators, EmailValidator,  } from '@angular/forms';
 import { LoginPage } from '../login/login';
-import { EmailComposer } from '@ionic-native/email-composer/ngx';
+// import { EmailComposer } from '@ionic-native/email-composer/ngx';
 import { database } from 'firebase';
 
 /**
@@ -23,7 +23,7 @@ export class RecuperarSenhaPage {
   private form: FormGroup;
   private usuario: any;
 
-  constructor(public navCtrl: NavController,private emailComposer: EmailComposer,private currentUser: Usuarios,private formBuilder: FormBuilder, public navParams: NavParams, private toast: ToastController,private loadingCtrl: LoadingController,private provider: UsuarioProvider) {
+  constructor(public navCtrl: NavController,/* private emailComposer: EmailComposer,*/private currentUser: Usuarios,private formBuilder: FormBuilder, public navParams: NavParams, private toast: ToastController,private loadingCtrl: LoadingController,private provider: UsuarioProvider) {
     this.usuario = this.navParams.data.contact || {};
     this.createForm();
 
